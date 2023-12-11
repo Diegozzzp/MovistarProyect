@@ -1,29 +1,261 @@
-body{
-    background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
-    display: flex;
-    justify-content: center;
-    width: 100vw;
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: sans-serif;
+  text-decoration: none;
 }
 
-#sidebar{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 100%;
-    background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-around;
+body {
+  background-image: url(../imagen/sol-sombra-al-aire-libre-brillante.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+/*barra lateral aun por corregir 😿*/
+
+.sidebar {
+  position: fixed;
+  left: -250px;
+  width: 200px;
+  height: 100%;
+  background: #042331;
+  transition: all 0.5s ease;
+}
+
+.sidebar header {
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  line-height: 70px;
+  background: #063146;
+  user-select: none;
+}
+
+.sidebar ul a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 45px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid black;
+  transition: 0.4s;
+}
+
+ul li:hover a {
+  padding-left: 50px;
+}
+
+.sidebar ul a i {
+  margin-right: 16px;
+}
+
+#check {
+  display: none;
+}
+
+label #btn,
+label #cancel {
+  position: absolute;
+  cursor: pointer;
+  background: #042331;
+  border-radius: 3px;
+}
+
+label #btn {
+  left: 40px;
+  top: 25px;
+  font-size: 35px;
+  color: white;
+  padding: 6px 12px;
+  transition: all 0.5s;
+}
+
+label #cancel {
+  z-index: 1111;
+  left: -195px;
+  top: 17px;
+  font-size: 30px;
+  color: #0a5275;
+  padding: 4px 9px;
+  transition: all 0.5s ease;
+}
+
+#check:checked ~ .sidebar {
+  left: 0;
+}
+
+#check:checked ~ label #btn {
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#check:checked ~ label #cancel {
+  left: 195px;
+}
+
+#check:checked ~ section .fondo {
+  left: 195px;
+}
+
+
+/*cards o planes*/
+
+section {
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: end;
+}
+
+.planes {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  margin: 30px;
+}
+
+.planes .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.planes .front {
+  transform: perspective(600px) rotateY(0deg);
+  box-shadow: 0 5px 10px #000;
+}
+
+.planes .front img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.planes .front h3 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.planes .back {
+  transform: perspective(600px) rotateY(180deg);
+  background: rgb(3, 35, 54);
+  padding: 15px;
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: 0 5px 10px #000;
+}
+
+.planes .back .link {
+  border-top: solid 1px #f3f3f3;
+  height: 50px;
+  line-height: 50px;
+}
+
+.planes .back .link a {
+  color: #f3f3f3;
+}
+
+.planes .back h3 {
+  font-size: 30px;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+.planes .back p {
+  letter-spacing: 1px;
+}
+
+.planes:hover .front {
+  transform: perspective(600px) rotateY(180deg);
+}
+
+.planes:hover .back {
+  transform: perspective(600px) rotateY(360deg);
+}
+
+
+/*botones azules inferiores*/
+
+.section-offers {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 35px 5px;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.titulo {
+  color: #666666;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 25px;
+  padding: 0 30px;
+}
+
+.offers {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.20);
+  color: #0b2739;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.offers-box {
+  text-align: left;
+  margin: 10px;
+  align-items: center;
+  justify-content: flex-start;
+ 
+}
+
+.offers-box--more {
+  width: 180px;
+  height: 80px;
+  background: #019bf2;
+  justify-content: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
 
 }
 
-#aside_bartext{
-    font-family:Helvetica Now;
-    font-size: 18px;
-    writing-mode:horizontal-tb;
-    text-align: center;
+.offers-box .offer-box-icon {
+  width: 35px;
 }
 
 
-
+.offer-box-text span{
+  font-weight: bold;
+  display: block;
+  padding: 0 0 0 10px;
+  color: #fff;
+}
