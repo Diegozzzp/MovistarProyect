@@ -212,7 +212,7 @@ section {
 }
 
 .titulo {
-  color: #666666;
+  color:black;
   font-size: 25px;
   font-weight: 400;
   text-align: center;
@@ -258,4 +258,10 @@ section {
   display: block;
   padding: 0 0 0 10px;
   color: #fff;
+}
+
+.offers-box--more:hover{
+  background-color: #5BC500;
+  transition: 1s;
+  opacity: 0.8;
 }
